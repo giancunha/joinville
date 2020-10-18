@@ -1,0 +1,198 @@
+.campoOculto,
+.telacadastro,
+.oculto,
+.telaAtendimento,
+.telaStatus {
+    display:none;
+}
+.carregando, .carregandoSecretaria { display:none; }
+audio { display: none; }
+.painelNovaEntrega {
+    margin: 0 auto;
+    float: none;
+    padding-bottom: 10px;
+}
+.novaEntrega {
+    height: 300px;
+    color: #FFFFFF;
+    font-size: 120px;
+    text-align: center;
+    line-height: 300px;
+}
+
+.entregaAnterior {
+    color: #FFFFFF;
+    font-size: 25px;
+    text-align: center;
+}
+.cupomCliente{
+    width: 100%;
+    display: none;
+}
+.valorItemCupom {
+    float: right;
+}
+.itemsCupom {
+    font-size: 8px;
+    margin: 0px;
+    padding: 0px;
+    line-height: normal;
+}
+.divisorCupom {
+    border-top: 2px black dotted;
+}
+#sortable li {
+    float: left;
+    padding: 5px;
+    margin: 5px;
+}
+.linksfoto {
+    margin-top: 5px;
+}
+
+.letter-list.medicos li {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+.letter-list.medicos li:first-child a,.letter-list.medicos li a,.letter-list.medicos li:last-child a {
+    height: auto;
+    text-align: left;
+    padding-left: 10px;
+    border-radius: unset;
+    border-left: 1px solid #EEEEEE;
+}
+.ui-datepicker {
+    background-color: #FFFFFF;
+    border: 1px solid #66AFE9;
+    border-radius: 15px;
+    box-shadow: 0 0 8px rgba(102,175,233,.6);
+    display: none;
+    margin-top: 4px;
+    padding: 10px;
+    width: 240px;
+}
+
+.ui-datepicker th {
+    color: #E56825;
+    font-weight: bold;
+}
+.ui-datepicker a,
+.ui-datepicker a:hover {
+    text-decoration: none;
+
+}
+.ui-datepicker a:hover,
+.ui-datepicker td:hover a {
+    color: #2A6496;
+    -webkit-transition: color 0.1s ease-in-out;
+    -moz-transition: color 0.1s ease-in-out;
+    -o-transition: color 0.1s ease-in-out;
+    transition: color 0.1s ease-in-out;
+}
+.ui-datepicker .ui-datepicker-header {
+    margin-bottom: 2px;
+    text-align: center;
+}
+.ui-datepicker-prev,
+.ui-datepicker-next {
+    background-color: #CCCCCC;
+}
+.ui-datepicker .ui-datepicker-title {
+    font-weight: 700;
+}
+.ui-datepicker .ui-icon {
+    display: none;
+}
+.ui-datepicker .ui-datepicker-calendar {
+    table-layout: fixed;
+    width: 100%;
+}
+.ui-datepicker .ui-datepicker-calendar th,
+.ui-datepicker .ui-datepicker-calendar td {
+    text-align: center;
+    padding: 1px 0;
+}
+.ui-datepicker .ui-datepicker-calendar td {
+    border-radius: 15px;
+    -webkit-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    -moz-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+.ui-datepicker .ui-datepicker-calendar td:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+.ui-datepicker td span, .ui-datepicker td a{
+    text-align: center;
+}
+.ui-datepicker .ui-datepicker-calendar td a {
+    text-decoration: none;
+}
+td.ui-datepicker-today {
+    color: #E56825;
+    font-weight: bolder;
+    background-color: #CCCCCC;
+}
+.ui-datepicker .ui-datepicker-current-day {
+    background-color: #E56825;
+}
+.ui-datepicker .ui-datepicker-current-day a {
+    color: #FFFFFF;
+}
+.ui-datepicker .ui-datepicker-calendar .ui-datepicker-unselectable:hover {
+    background-color: #FFFFFF;
+    cursor: default;
+}
+.table thead > tr > th {
+    background-color: #E56825;
+    color: #FFFFFF;
+    border: 0px;
+}
+.table tbody > tr {
+    font-size: 11px;
+}
+.table tbody > tr:nth-child(even) {
+    background-color: #FFFFDD;
+}
+.table tbody > tr:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+.medicoSelecionado {
+    color: #FFFFFF !important;
+    background: #428BCA !important;
+}
+
+.btn {
+    padding: 4px 8px;
+}
+
+td .btn {
+    padding: 1px 2px;
+}
+
+.construcao * {
+    background-color: #FFCDD2;
+}
+
+.table tbody > tr > td {
+    padding: 0px 4px;
+    vertical-align: middle;
+}
+
+.preco {
+    text-align: right;
+}
+
+.subtitulo {
+    background-color: #FFFFDD;
+    font-weight: bold;
+}
+
+.imagemFacebook {
+    vertical-align: middle;
+    margin: 2px;
+    width: 30px;
+    border-radius: 40px;
+}

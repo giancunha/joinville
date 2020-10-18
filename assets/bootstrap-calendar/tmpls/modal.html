@@ -1,0 +1,21 @@
+<% 	event.date_start = new Date(event.db_start);
+	event.date_end = new Date(event.db_end); 
+        
+        function addZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+%>
+<div class="row">
+    <div id="event-meta" class="col-md-8">
+        <span>Início em <%= event.date_start.getDate() %> <%= calendar.locale["m" + event.date_start.getMonth()] %> <%= event.date_start.getFullYear() %>, as <%= addZero(event.date_start.getHours()) %>:<%= addZero(event.date_start.getMinutes()) %> <br />
+        <span>Término em <%= event.date_end.getDate() %> <%= calendar.locale["m" + event.date_end.getMonth()] %> <%= event.date_end.getFullYear() %> as <%= addZero(event.date_end.getHours()) %>:<%= addZero(event.date_end.getMinutes()) %> </span><br />
+        
+    </div>
+
+    <div class="col-md-4 text-right">
+        <a href = "<%= event.url %>" class = "btn btn-primary"><i class = "icon-calendar"></i> Mais informações</a>
+    </div>
+</div>
