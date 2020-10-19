@@ -36,8 +36,6 @@
                 </div>
                 <h5 class="sidebartitle actitle">CONTA DE ACESSO</h5>
                 <ul class="nav nav-pills nav-stacked nav-bracket mb30">
-                    <li><a href="<?php echo URLADM  ?>/usuarios/alteraSenha"><i class="fa fa-lock"></i> Altera Senha</a></li>
-                    <li><a href="<?php echo URLADM  ?>/usuarios/meusDados"><i class="fa fa-user"></i> Meus Dados</a></li>
                     <li><a href="<?php echo URLADM  ?>/sair.php"><i class="glyphicon glyphicon-log-out"></i>Sair</a></li>
                 </ul>
             </div>
@@ -69,8 +67,6 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                                <li><a href="<?php echo URLADM  ?>/usuarios/alteraSenha"><i class="fa fa-lock"></i>Altera Senha</a></li>
-                                <li><a href="<?php echo URLADM  ?>/usuarios/meusDados"><i class="fa fa-user"></i>Meus Dados</a></li>
                                 <li><a href="<?php echo URLADM  ?>/sair.php"><i class="glyphicon glyphicon-log-out"></i>Sair</a></li>
                             </ul>
                         </div>

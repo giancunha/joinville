@@ -6,7 +6,6 @@
     $menuPai = new Menu();
     $menuPai->setSecao($gets[1]);
     $menuPai->selecionaPai();
-
     $resultado = Menu::listaMenuPaisPorPerfil( $idUsuario );
     foreach($resultado as $chave => $valor){
         ?>
