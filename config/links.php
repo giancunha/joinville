@@ -40,7 +40,6 @@ $GLOBALS['links'] = [
         'bootstrap-datetimepicker',
         'jsPai',
         'scripts',
-        'facebook',
         'jquery-flot',
         'jquery-flot-resize',
         'jquery-flot-pie',
@@ -93,7 +92,6 @@ if(is_file('js/' . $arquivo . '.js')){
     $GLOBALS['links']['js']['jsPai'] = URLADM . "/js/index.js";
 }
 $GLOBALS['links']['js']['scripts'] = URLADM . "/assets/Scripts.js";
-$GLOBALS['links']['js']['facebook'] = URLADM . "/plugins/facebook.js";
 $GLOBALS['links']['js']['jquery-flot'] = URLADM . "/assets/js/flot/jquery.flot.min.js";
 $GLOBALS['links']['js']['jquery-flot-resize'] = URLADM . "/assets/js/flot/jquery.flot.resize.min.js";
 $GLOBALS['links']['js']['jquery-flot-pie'] = URLADM . "/assets/js/flot/jquery.flot.pie.min.js";

@@ -7,7 +7,7 @@ $(document).ready(function () {
             $('#idEstadoNaturalidade').hide();
             $('#idNaturalidade').hide();
             mensagemajax("<i class='fa fa-spinner fa-spin'></i> Buscando estados. Aguarde...", 'growl-warning', 3000);
-            $.getJSON('/adm/ajax/estados.ajax.php?search=', {idPais: $(this).val(), ajax: 'true'}, function (j) {
+            $.getJSON('/ajax/estados.ajax.php?search=', {idPais: $(this).val(), ajax: 'true'}, function (j) {
                 var options = '<option value=""></option>';
                 for (var i = 0; i < j.length; i++) {
                     options += '<option value="' + j[i].idEstado + '">' + j[i].estado + '</option>';
@@ -28,7 +28,7 @@ $(document).ready(function () {
         if( $(this).val() > 0 ) {
             $('#idNaturalidade').hide();
             mensagemajax("<i class='fa fa-spinner fa-spin'></i> Buscando cidades. Aguarde...", 'growl-warning', 3000);
-            $.getJSON('/adm/ajax/cidades.ajax.php?search=', {idEstado: $(this).val(), ajax: 'true'}, function (j) {
+            $.getJSON('/ajax/cidades.ajax.php?search=', {idEstado: $(this).val(), ajax: 'true'}, function (j) {
                 var options = '<option value=""></option>';
                 for (var i = 0; i < j.length; i++) {
                     options += '<option value="' + j[i].idCidade + '">' + j[i].cidade + '</option>';
@@ -49,7 +49,7 @@ $(document).ready(function () {
             $('#idCidadeComercial').hide();
             $('#idEstadoComercial').hide();
             $('.carregando').show();
-            $.getJSON('/adm/ajax/estados.ajax.php?search=', {idPais: $(this).val(), ajax: 'true'}, function (j) {
+            $.getJSON('/ajax/estados.ajax.php?search=', {idPais: $(this).val(), ajax: 'true'}, function (j) {
                 var options = '<option value=""></option>';
                 for (var i = 0; i < j.length; i++) {
                     options += '<option value="' + j[i].idEstado + '">' + j[i].estado + '</option>';
@@ -70,7 +70,7 @@ $(document).ready(function () {
         if( $(this).val() > 0 ) {
             $('#idCidadeComercial').hide();
             $('.carregando').show();
-            $.getJSON('/adm/ajax/cidades.ajax.php?search=', {idEstado: $(this).val(), ajax: 'true'}, function (j) {
+            $.getJSON('/ajax/cidades.ajax.php?search=', {idEstado: $(this).val(), ajax: 'true'}, function (j) {
                 var options = '<option value=""></option>';
                 for (var i = 0; i < j.length; i++) {
                     options += '<option value="' + j[i].idCidade + '">' + j[i].cidade + '</option>';
@@ -91,7 +91,7 @@ $(document).ready(function () {
             $('#idCidade').hide();
             $('#idEstado').hide();
             $('.carregando').show();
-            $.getJSON('/adm/ajax/estados.ajax.php?search=', {idPais: $(this).val(), ajax: 'true'}, function (j) {
+            $.getJSON('/ajax/estados.ajax.php?search=', {idPais: $(this).val(), ajax: 'true'}, function (j) {
                 var options = '<option value=""></option>';
                 for (var i = 0; i < j.length; i++) {
                     options += '<option value="' + j[i].idEstado + '" uf="'+j[i].uf+'">' + j[i].estado + '</option>';
@@ -113,7 +113,7 @@ $(document).ready(function () {
         if( $(this).val() > 0 ) {
             $('#idCidade').hide();
             $('.carregando').show();
-            $.getJSON('/adm/ajax/cidades.ajax.php?search=', {idEstado: $(this).val(), ajax: 'true'}, function (j) {
+            $.getJSON('/ajax/cidades.ajax.php?search=', {idEstado: $(this).val(), ajax: 'true'}, function (j) {
                 var options = '<option value=""></option>';
                 for (var i = 0; i < j.length; i++) {
                     options += '<option value="' + j[i].idCidade + '">' + j[i].cidade + '</option>';
@@ -133,7 +133,7 @@ $(document).ready(function () {
             if(($(this).val().length) == 9){
                 $('.buscaEndereco').show();
                 mensagemajax("<i class='fa fa-spinner fa-spin'></i> Carregando endereço pelo novo CEP, aguarde...", 'growl-info', 5000);
-                $.getJSON('/adm/ajax/enderecoCep.ajax.php?search=', {cep: $(this).val(), ajax: 'true'}, function (data) {
+                $.getJSON('/ajax/enderecoCep.ajax.php?search=', {cep: $(this).val(), ajax: 'true'}, function (data) {
                     if (!data.erro) {
                         $('#endereco').val(data.logradouro);
                         $('#bairro').val(data.bairro);
@@ -208,7 +208,7 @@ $(document).ready(function () {
 
     $('#pessoasDataTable').DataTable({
         "ajax": {
-            "url": "/adm/ajax/pessoas.ajax.php",
+            "url": "/ajax/pessoas.ajax.php",
             "dataSrc": ""
         },
         columnDefs: [
@@ -235,8 +235,8 @@ $(document).ready(function () {
             { "data": "idPessoa",
                 "render": function(data, type, full, meta){
                     var sclass = ' class="btn btn-default"';
-                    var url = "/adm/pessoas/pessoa/editaPessoa/?id=";
-                    var ativo = "/adm/pessoas/pessoa/ativacaoPessoa/?id=";
+                    var url = "/pessoas/pessoa/editaPessoa/?id=";
+                    var ativo = "/pessoas/pessoa/ativacaoPessoa/?id=";
                     return '<a href='+url+ data + sclass + ' title="Editar Cliente"><i class="fa fa-edit"></i></a>' +
                         '<a href=' + ativo + data + sclass + ' title="Ativar/Desativar">' +
                         '<i class="fa fa-user"></i>' +
@@ -404,7 +404,7 @@ jQuery(function ($) {
             var id = $(this).attr("data-id");
             $('#tituloModal').html(tituloModal);
             $('#conteudoModal').html("<thead><th><i class='fa fa-spinner fa-spin'></i>Carregando conteudo. Aguarde...</th></thead>");
-            $.post('/adm/telas/' + secaoPai + "/" + secaoFilho + '/' + acao + ucFirst(secaoFilho) + '.php', {id: id}, function (data) {
+            $.post('/telas/' + secaoPai + "/" + secaoFilho + '/' + acao + ucFirst(secaoFilho) + '.php', {id: id}, function (data) {
                 if (data) {
                     $('#conteudoModal').html(data);
                 } else {
@@ -441,8 +441,8 @@ jQuery(function ($) {
         mensagemajax("<i class='fa fa-spinner fa-spin'></i> Preparando impressão. Aguarde...", 'growl-warning');
         var idAgenda = $('#idAgendaAtendimento').val();
         var documento = $(this).data('documento');
-        myWindow = window.open("https://" + pegaDominio() + "/adm/template/tpl-blank.htm","_blank", "scrollbars=1,resizable=1,height=768,width=1024");
-        $.post('/adm/ajax/agendaImprimeDocumento.ajax.php', { idAgenda: idAgenda, documento: documento }, function (tela) {
+        myWindow = window.open("https://" + pegaDominio() + "/template/tpl-blank.htm","_blank", "scrollbars=1,resizable=1,height=768,width=1024");
+        $.post('/ajax/agendaImprimeDocumento.ajax.php', { idAgenda: idAgenda, documento: documento }, function (tela) {
             myWindow.document.write(tela);
             myWindow.focus();
             myWindow.print();
@@ -482,7 +482,7 @@ jQuery(function ($) {
                 ordem[count] = $(this).data('id');
                 count++;
             });
-            $.post('/adm/telas/' + secaoPai + "/" + secaoFilho + '/alteraOrdemFotos.php', {ordem: ordem}, function (data) { //caminho a partir da raiz
+            $.post('/telas/' + secaoPai + "/" + secaoFilho + '/alteraOrdemFotos.php', {ordem: ordem}, function (data) { //caminho a partir da raiz
                 if (data == '1') {
                     mensagemajax('ORDEM DAS FOTOS ALTERADA COM SUCESSO.', 'growl-success');
                 } else {
@@ -591,7 +591,7 @@ jQuery(function ($) {
                 fd.append(input.name, input.value);
             });
             $.ajax({
-                url: '/adm/telas/' + caminho + '.php', //caminho a partir da raiz
+                url: '/telas/' + caminho + '.php', //caminho a partir da raiz
                 data: fd,
                 contentType: false,
                 processData: false,
@@ -621,7 +621,7 @@ jQuery(function ($) {
                 fd.append(input.name, input.value);
             });
             $.ajax({
-                url: '/adm/telas/' + caminho + '.php',
+                url: '/telas/' + caminho + '.php',
                 data: fd,
                 contentType: false,
                 processData: false,
@@ -644,7 +644,7 @@ jQuery(function ($) {
             var secaoPai = $("#btnAlteraSenha").attr("data-secaoPai");
             var secaoFilho = $("#btnAlteraSenha").attr("data-secaoFilho");
             caminho = secaoPai + "/" + secaoFilho + "/alteraSenha";
-            $.post('/adm/telas/' + caminho + '.php', $("#formulario").serialize(), function (data) { //caminho a partir da raiz
+            $.post('/telas/' + caminho + '.php', $("#formulario").serialize(), function (data) { //caminho a partir da raiz
                 if (data == '1') {
                     mensagemajax('Senha atualizada com sucesso!', 'growl-success');
                 } else {
@@ -674,7 +674,7 @@ jQuery(function ($) {
                     id: id,
                     ativo: ativo
                 },
-                url: '/adm/telas/' + caminho + '.php',
+                url: '/telas/' + caminho + '.php',
                 success: function (data) {
                     if (data == 1) {
                         mensagemajax('Alterado com sucesso!', 'growl-success');
@@ -731,7 +731,7 @@ jQuery(function ($) {
                     data: {
                         id: id
                     },
-                    url: '/adm/telas/' + caminho + '.php',
+                    url: '/telas/' + caminho + '.php',
                     success: function (data) {
                         if (data == 1) {
                             var $this = $(this);
@@ -766,7 +766,7 @@ jQuery(function ($) {
                     data: {
                         id: id
                     },
-                    url: '/adm/telas/' + caminho + '.php',
+                    url: '/telas/' + caminho + '.php',
                     success: function (data) {
                         if (data == 1) {
                             var $this = $(this);
@@ -813,7 +813,7 @@ jQuery(function ($) {
             });
 
             $.ajax({
-                url: '/adm/telas/' + caminho + '.php', //caminho a partir da raiz
+                url: '/telas/' + caminho + '.php', //caminho a partir da raiz
                 data: fd,
                 contentType: false,
                 processData: false,
@@ -852,7 +852,7 @@ jQuery(function ($) {
                 fd.append(input.name, input.value);
             });
             $.ajax({
-                url: '/adm/telas/' + caminho + '.php',
+                url: '/telas/' + caminho + '.php',
                 data: fd,
                 contentType: false,
                 processData: false,
@@ -860,7 +860,7 @@ jQuery(function ($) {
                 success: function (data) {
                     if (data > 0) {
                         $('.consultaClientePessoa').html("<th><i class='fa fa-spinner fa-spin'></i>Carregando Contatos. Aguarde...</th>");
-                        $.post('/adm/ajax/consultaClientePessoa.ajax.php', {idCliente: data}, function (data2) {
+                        $.post('/ajax/consultaClientePessoa.ajax.php', {idCliente: data}, function (data2) {
                             $('.consultaClientePessoa').html(data2);
                             resetaClientePessoa();
                             $('#btnClientePessoa').html('Cadastrar');
@@ -892,7 +892,7 @@ jQuery(function ($) {
             );
 
             $.ajax({
-                url: '/adm/ajax/emitirBoleto.php',
+                url: '/ajax/emitirBoleto.php',
                 data: fd,
                 contentType: false,
                 processData: false,
@@ -1006,7 +1006,7 @@ jQuery(function ($) {
             if(confirm('Tem certeza que deseja excluir esse contato?')){
                 mensagemajax("<i class='fa fa-spinner fa-spin'></i> Excluindo contato. Aguarde...", 'growl-warning', 20000);
                 $.ajax({
-                    url: '/adm/telas/pessoas/pessoa/excluiClientePessoa.php',
+                    url: '/telas/pessoas/pessoa/excluiClientePessoa.php',
                     data: {
                         idClientePessoa: idClientePessoa,
                         idCliente: idCliente
@@ -1016,7 +1016,7 @@ jQuery(function ($) {
                         if (data > 0) {
                             mensagemajax('Contato removido com sucesso!', 'growl-success');
                             $('.consultaClientePessoa').html("<th><i class='fa fa-spinner fa-spin'></i>Carregando Contatos. Aguarde...</th>");
-                            $.post('/adm/ajax/consultaClientePessoa.ajax.php', { idCliente: data }, function (data2) {
+                            $.post('/ajax/consultaClientePessoa.ajax.php', { idCliente: data }, function (data2) {
                                 $('.consultaClientePessoa').html(data2);
                                 $('#btnClientePessoa').html('Cadastrar');
                                 resetaClientePessoa();
@@ -1049,7 +1049,7 @@ jQuery(function ($) {
             $('.tabelaPessoas').html("<thead><th><i class='fa fa-spinner fa-spin'></i>Carregando pessoas. Aguarde...</th></thead>");
             var secaoPai = $("#btnIncluiDado").attr("data-secaoPai");
             var secaoFilho = $("#btnIncluiDado").attr("data-secaoFilho");
-            $.post('/adm/telas/' + secaoPai + "/" + secaoFilho + '/listaPessoas.php', $("#formulario").serialize(), function(data){ //caminho a partir da raiz
+            $.post('/telas/' + secaoPai + "/" + secaoFilho + '/listaPessoas.php', $("#formulario").serialize(), function(data){ //caminho a partir da raiz
                 $('.tabelaPessoas').html('');
                 $('.tabelaPessoas').html(data);
             })
@@ -1104,7 +1104,7 @@ jQuery(function ($) {
         var secaoPai = $(this).data('secaopai');
         var secaoFilho = $(this).data('secaofilho');
         var idFoto = $(this).data('idfoto');
-        $.post('/adm/telas/' + secaoPai + "/" + secaoFilho + '/alteraDestaque.php', {idFoto: idFoto}, function (data) { //caminho a partir da raiz
+        $.post('/telas/' + secaoPai + "/" + secaoFilho + '/alteraDestaque.php', {idFoto: idFoto}, function (data) { //caminho a partir da raiz
             if (data == 'S') {
                 $(".fotodestacar[data-idfoto='" + idFoto + "'] .icondestaque").removeClass('glyphicon-star-empty');
                 $(".fotodestacar[data-idfoto='" + idFoto + "'] .icondestaque").addClass('glyphicon-star');

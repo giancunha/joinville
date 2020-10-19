@@ -10,6 +10,7 @@ if(is_file("../config/includes.php")){
 //CONFIGURAÇÕES
 include_once($caminho . "config/config.php");
 include_once($caminho . "config/funcoes.php");
+include_once($caminho . "config/validaSessao.php");
 include_once($caminho . "config/links.php");
 include_once($caminho . "class/BdSQL.php");
 include_once($caminho . "class/Menu.php");

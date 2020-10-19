@@ -6,8 +6,8 @@ if($_SERVER['SERVER_NAME'] != 'localhost'){
 } else {
     define('PROTOCOLO', 'http://');
 }
+define('URLADM', PROTOCOLO . $_SERVER['HTTP_HOST']);
 define('URL', PROTOCOLO . $_SERVER['HTTP_HOST']);
-define('URLADM', URL . '/adm');
 const HOST = 'localhost';
 const SESSAOADM = 'JOINVILLE';
 define('NOMEBD', 'abc');
@@ -18,4 +18,3 @@ define('USERBANCO', substr(HOMEDIR, 0, 8) . '_' . USUARIOBD);
 
 define('EMPRESA',"JOINVILLE");
 const TEMPOSESSAO = 600; //Minutos
-const CAMINHOABSOLUTO = '/home/' . HOMEDIR . '/public_html/';

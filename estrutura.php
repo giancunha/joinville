@@ -13,24 +13,11 @@
         echo '<link href="'. $GLOBALS['links']['css'][$value].'" rel="stylesheet">';
     }
     ?>
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.otvelevadores.com.br/otv/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.otvelevadores.com.br/otv/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://www.otvelevadores.com.br/otv/icons/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.otvelevadores.com.br/otv/icons/favicon-16x16.png">
-    <link rel="manifest" href="https://www.otvelevadores.com.br/otv/icons/site.webmanifest">
-    <link rel="mask-icon" href="https://www.otvelevadores.com.br/otv/icons/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="apple-mobile-web-app-title" content="ADM OTV">
-    <meta name="application-name" content="ADM OTV">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="<?php echo URLADM; ?>/assets/js/html5shiv.js"></script>
     <script src="<?php echo URLADM; ?>/assets/js/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript">
-        var idFacebook = <?php echo IDFACEBOOK; ?>;
-    </script>
 </head>
 <body>
 <!-- Preloader -->
@@ -95,31 +82,6 @@
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <?php
                                 $usuario = unserialize($_SESSION['usuario-adm-'.SESSAOADM]);
-                                if($usuario->getIdFacebook() > 0){
-                                    //VERIFICA SE O ICONE DO FACEBOOK DO JOGADOR JÁ ESTÁ NA PASTA E COPIA DO FACEBOOK SE NÃO ESIVER
-                                    $imagemFace = IMAGENSFACE . $usuario->getIdFacebook() . ".jpg";
-                                    $atualizarAposDias = $ultimaAtualizacao = 0;
-                                    if(is_file(CAMINHOABSOLUTO . $imagemFace)){
-                                        $ultimaAtualizacao = filectime(CAMINHOABSOLUTO . $imagemFace);
-                                        $atualizarAposDias = time() -  (DIASIMAGEMFACE * 24 * 60 * 60);
-                                    }
-                                    if(!is_file(CAMINHOABSOLUTO . $imagemFace) or $ultimaAtualizacao < $atualizarAposDias){
-                                        $imagemIconeFace = "http://graph.facebook.com/" . $usuario->getIdFacebook() . "/picture?type=large&redirect=false";
-                                        $userJSON = file_get_contents($imagemIconeFace);
-                                        $jsonStr = json_decode($userJSON, true);
-                                        $imagemIconeFace = $jsonStr['data']['url'];
-                                        if ($content = file_get_contents($imagemIconeFace)){
-                                            if (!empty($content)) {
-                                                $fp = fopen(CAMINHOABSOLUTO . $imagemFace, "w");
-                                                fwrite($fp, $content);
-                                                fclose($fp);
-                                            }
-                                        }
-                                    }
-                                    ?>
-                                    <img src="<?php echo URL . '/' . $imagemFace; ?>" alt="<?php echo $usuario->getNome(); ?>" />
-                                    <?php
-                                }
                                 ?>
                                 <span style="color: #FFFFFF;"><?php echo $usuario->getNome(); ?></span>
                                 <span class="caret"></span>
@@ -142,82 +104,11 @@
 </section>
 <!-- Importação de links javascript -->
 <?php
-$versao = 1;//rand();
+$versao = 1;
 foreach ($GLOBALS['links']['addjs'] as $key => $value) {
     echo "<script src='". $GLOBALS['links']['js'][$value]."?v=$versao'></script>\n";
 }
 ?>
 <input type="hidden" value="<?php echo $gets['1']; ?>" id="urlSecaoFilho">
-<script type="text/javascript">
-    $(function () {
-        <?php
-        if(isset($_SESSION['graphs'])){
-        foreach ($_SESSION['graphs'] as $chave => $graph) {
-        if($graph['filho'] != $gets[1]){
-            return false;
-        }
-        ?>
-        //PIE CHART
-        var dados = <?php echo json_encode($graph['dados']); ?>;
-        var piedata = dados;
-        jQuery.plot('#<?php echo $graph['id']; ?>', piedata, {
-            series: {
-                pie: {
-                    show: true,
-                    radius: 1,
-                    label: {
-                        show: true,
-                        radius: 2/3,
-                        formatter: labelFormatter,
-                        threshold: 0.1
-                    }
-                }
-            },
-            grid: {
-                hoverable: true,
-                clickable: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                cssClass: "flotTip",
-                content: "%p.0%, %s",
-                shifts: {
-                    x: 20,
-                    y: 0
-                },
-                defaultTheme: false
-            }
-        });
-        <?php
-        }
-        ?>
-        function labelFormatter(label, series) {
-            return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
-        }
-        <?php
-        }
-        ?>
-    });
-</script>
-<style>
-    .flot {
-        left: 0px;
-        top: 0px;
-        width: 610px;
-        height: 250px;
-    }
-    #flotTip {
-        padding: 3px 5px;
-        background-color: #000;
-        z-index: 100;
-        color: #fff;
-        opacity: .80;
-        filter: alpha(opacity=85);
-    }
-    .pieLabel div {
-        color: white !important;
-        text-shadow: 0 0 4px #000;
-    }
-</style>
 </body>
 </html>

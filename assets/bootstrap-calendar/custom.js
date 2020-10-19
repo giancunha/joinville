@@ -29,7 +29,7 @@
 		language: 'pt-BR',
 		//events_source: 'events.json.php',
 		view: 'month',
-		tmpl_path: '/adm/assets/bootstrap-calendar/tmpls/',
+		tmpl_path: '/assets/bootstrap-calendar/tmpls/',
 		tmpl_cache: false,
 		modal:"#events-modal",
 		modal_type : "template", 
@@ -59,7 +59,7 @@
 				general: 'label'
 			}
 		},
-        events_source: '/adm/telas/agendas/agenda/getAgenda.php?type=calendar'
+        events_source: '/telas/agendas/agenda/getAgenda.php?type=calendar'
 	};
 
 	var calendar = $('#calendar').calendar(options);
