@@ -9,14 +9,6 @@
     <link href="<?php echo URLADM; ?>/assets/css/style.default.css" rel="stylesheet">
     <link href="<?php echo URLADM; ?>/assets/css/font.helvetica-neue.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <style>
-        #loginFace {
-            display:none;
-        }
-    </style>
-    <script type="text/javascript">
-        var idFacebook = <?php echo IDFACEBOOK; ?>;
-    </script>
 </head>
 <body class="signin">
 <section>
@@ -40,19 +32,7 @@
                     <input type="password" class="form-control pword" placeholder="Senha" name="senha" required="">
                     <button class="btn btn-success btn-block">Entrar</button>
                     <a class="btn btn-default btn-block" href="recuperaSenha.php">Esqueci Minha Senha</a>
-                    <?php
-                    if(LOGINFACEBOOK) {
-                        ?>
-                        <div class=" btn btn-primary btn-block loginface">
-                            <i class="fa fa-facebook-square"></i> Login via Facebook
-                        </div>
-                        <?php
-                    }
-                    ?>
                 </form>
-                <div class="alert alert-danger" id="loginFace">
-                    <strong>Atenção!</strong> Seu usuário não tem permissão para acessar este sistema via Facebook.
-                </div>
             </div>
         </div>
         <div class="row">
@@ -75,7 +55,6 @@
 <script src="<?php echo URLADM; ?>/assets/js/jquery.cookies.js"></script>
 <script src="<?php echo URLADM; ?>/assets/js/toggles.min.js"></script>
 <script src="<?php echo URLADM; ?>/assets/js/retina.min.js"></script>
-<script src="<?php echo URLADM; ?>/plugins/facebook.js"></script>
 <script src="<?php echo URLADM; ?>/assets/js/custom.js"></script>
 </body>
 </html>

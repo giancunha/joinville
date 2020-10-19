@@ -10,7 +10,7 @@
     <!-- Importação de links CSS -->
     <?php
     foreach ($GLOBALS['links']['addcss'] as $key => $value) {
-        echo '<link href="'. $GLOBALS['links']['css'][$value].'" rel="stylesheet">';
+        echo '<link href="'. $GLOBALS['links']['css'][$value].'" rel="stylesheet">' . PHP_EOL;
     }
     ?>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -20,23 +20,6 @@
     <![endif]-->
 </head>
 <body>
-<!-- Preloader -->
-<!--
-<div id="preloader">
-    <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
-</div>
--->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
-                <h4 class="modal-title" id="tituloModal">Large Modal</h4>
-            </div>
-            <div class="modal-body" id="conteudoModal">...</div>
-        </div>
-    </div>
-</div>
 <section>
     <div class="leftpanel">
         <div class="logopanel">
@@ -61,7 +44,6 @@
             <?php include('telas/estrutura-menu.php'); ?>
         </div><!-- leftpanelinner -->
     </div><!-- leftpanel -->
-
     <div class="mainpanel">
         <div class="headerbar">
             <div class="header-left">

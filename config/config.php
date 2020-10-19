@@ -9,12 +9,10 @@ if($_SERVER['SERVER_NAME'] != 'localhost'){
 define('URLADM', PROTOCOLO . $_SERVER['HTTP_HOST']);
 define('URL', PROTOCOLO . $_SERVER['HTTP_HOST']);
 const HOST = 'localhost';
-const SESSAOADM = 'JOINVILLE';
-define('NOMEBD', 'abc');
-define('USUARIOBD', 'xyz');
-define('SENHABD', 'password');
-define('NOMEBANCO', substr(HOMEDIR, 0, 8) . '_' . NOMEBD);
-define('USERBANCO', substr(HOMEDIR, 0, 8) . '_' . USUARIOBD);
-
-define('EMPRESA',"JOINVILLE");
+const EMPRESA = 'JOINVILLE';
+const SESSAOADM = EMPRESA;
+const USUARIOBD = 'root';
+const SENHABD = 'sucesso2020';
+const NOMEBANCO = 'joinville';
+const USERBANCO = 'postgres';
 const TEMPOSESSAO = 600; //Minutos

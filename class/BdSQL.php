@@ -1,8 +1,8 @@
 <?php
 class BdSQL{
-    private $tipoBanco	= 'mysql';
+    private $tipoBanco	= 'pgsql';
     private $host		= HOST;
-    private $porta		= '3306';
+    private $porta		= '5432';
     private $nomeBanco	= NOMEBANCO;
     private $userBanco	= USERBANCO;
     private $passBanco	= SENHABD;

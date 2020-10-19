@@ -1,19 +1,10 @@
 <?php
 class Usuario{
     private $idUsuario;
-    private $idFacebook = NULL;
     private $email;
     private $senha;
-    private $ultimoLogin;
     private $nome;
-    private $cpf;
-    private $sexo;
-    private $telefone;
-    private $fax;
-    private $celular;
     private $ativo;
-
-    private $idTipoUsuario;
 
 // contrutor vazio
     public function __construct(){}
@@ -23,12 +14,7 @@ class Usuario{
         $sql = "
             UPDATE Usuario
                SET nome = ?,
-                   email = ?,
-                   telefone = ?,
-                   cpf = ?,
-                   sexo = ?,
-                   fax = ?,
-                   celular = ?
+                   email = ?
              WHERE idUsuario = ?
         ";
         $bd = new BdSQL;
@@ -36,12 +22,7 @@ class Usuario{
             array(
                 '1' => $this->nome,
                 '2' => $this->email,
-                '3' => $this->telefone,
-                '4' => $this->cpf,
-                '5' => $this->sexo,
-                '6' => $this->fax,
-                '7' => $this->celular,
-                '8' => $this->idUsuario
+                '3' => $this->idUsuario
             )
         );
         $result = $bd->altera($sql, $dados);
@@ -155,27 +136,6 @@ class Usuario{
         }
     }
 
-    public function insereIdFacebook(){
-        $sql = "
-            UPDATE Usuario
-               SET idFacebook = ?
-             WHERE idUsuario = ?
-        ";
-        $bd = new BdSQL;
-        $dados = array(
-            array(
-                '1' => $this->idFacebook,
-                '2' => $this->idUsuario
-            )
-        );
-        $result = $bd->altera($sql, $dados);
-        if($result=='ok'){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
     public static function listaPrincipal( $palavraChave = NULL ){
         if($palavraChave){
             $palavraChave = "AND nome LIKE '%$palavraChave%' OR email LIKE '%$palavraChave%' ";
@@ -212,12 +172,8 @@ class Usuario{
             SELECT *
               FROM Usuario
              WHERE ativo = '1'
-               AND (
-                   (email ='$this->email'
-               AND senha = '" . $this->senha . "')
-                OR (idFacebook > 0
-               AND idFacebook = '$this->idFacebook')
-               )
+               AND email ='$this->email'
+               AND senha = '" . $this->senha . "'
         ";
         $resultado = $bd->consulta($sql);
         if(count($resultado)==1){
@@ -226,7 +182,6 @@ class Usuario{
                     $this->$chave = $valor;
                 }
             }
-            $this->ultimoLogin();
             return true;
         }else{
             return false;
@@ -294,38 +249,12 @@ class Usuario{
         return $usuarios;
     }
 
-    public function ultimoLogin(){
-        $sql = "
-            UPDATE Usuario
-               SET ultimoLogin = NOW()
-             WHERE idUsuario = ?
-        ";
-        $bd = new BdSQL;
-        $dados = array(
-            array('1'=>$this->getIdUsuario())
-        );
-        $result = $bd->altera($sql, $dados);
-        if($result=='ok'){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
 //GETTERS E SETTERS
     public function getIdUsuario(){
         return $this->idUsuario;
     }
     public function setIdUsuario($idUsuario){
         $this->idUsuario = $idUsuario;
-    }
-    public function getIdFacebook()
-    {
-        return $this->idFacebook;
-    }
-    public function setIdFacebook($idFacebook)
-    {
-        $this->idFacebook = $idFacebook;
     }
     public function getEmail(){
         return $this->email;
@@ -339,54 +268,12 @@ class Usuario{
     public function setSenha($senha){
         $this->senha = encriptaSenha($senha);
     }
-    public function getultimoLogin(){
-        return $this->ultimoLogin;
-    }
-    public function setultimoLogin($ultimoLogin){
-        $this->ultimoLogin = $ultimoLogin;
-    }
     public function getnome(){
         return nomeProprio($this->nome);
 
     }
     public function setnome($nome){
         $this->nome = $nome;
-    }
-    public function getIdTipoUsuario(){
-        return $this->idTipoUsuario;
-    }
-    public function setIdTipoUsuario($idTipoUsuario){
-        $this->idTipoUsuario = $idTipoUsuario;
-    }
-    public function getCpf(){
-        return $this->cpf;
-    }
-    public function setCpf($cpf){
-        $this->cpf = $cpf;
-    }
-    public function getSexo(){
-        return $this->sexo;
-    }
-    public function setSexo($sexo){
-        $this->sexo = $sexo;
-    }
-    public function getTelefone(){
-        return $this->telefone;
-    }
-    public function setTelefone($telefone){
-        $this->telefone = $telefone;
-    }
-    public function getFax(){
-        return $this->fax;
-    }
-    public function setFax($fax){
-        $this->fax = $fax;
-    }
-    public function getCelular(){
-        return $this->celular;
-    }
-    public function setCelular($celular){
-        $this->celular = $celular;
     }
     public function getAtivo(){
         return $this->ativo;
