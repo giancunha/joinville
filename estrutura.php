@@ -87,6 +87,7 @@ foreach ($GLOBALS['links']['addjs'] as $key => $value) {
     echo "<script src='". $GLOBALS['links']['js'][$value]."?v=$versao'></script>\n";
 }
 ?>
+<input type="hidden" value="<?php echo $gets['0']; ?>" id="urlSecaoPai">
 <input type="hidden" value="<?php echo $gets['1']; ?>" id="urlSecaoFilho">
 </body>
 </html>

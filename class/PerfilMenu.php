@@ -84,8 +84,8 @@ class PerfilMenu{
                    men.nome,
                    (SELECT icone
                       FROM MenuIcone AS menIco
-                     WHERE men.idIcone = menIco.idMenuIcone
-                   ) AS idIcone,
+                     WHERE men.idicone = menIco.idMenuIcone
+                   ) AS idicone,
                    (SELECT idPerfilMenu
                       FROM PerfilMenu AS perMen
                      WHERE perMen.idPerfil = '$idPerfil'
@@ -121,8 +121,8 @@ class PerfilMenu{
                    men.nome,
                    (SELECT icone
                       FROM MenuIcone AS menIco
-                     WHERE men.idIcone = menIco.idMenuIcone
-                   ) AS idIcone,
+                     WHERE men.idicone = menIco.idMenuIcone
+                   ) AS idicone,
                    (SELECT idPerfilMenu
                       FROM PerfilMenu AS perMen
                      WHERE perMen.idPerfil = '$idPerfil'
@@ -193,11 +193,11 @@ class PerfilMenu{
     public function setNome($nome){
         $this->nome = $nome;
     }
-    public function getIdIcone(){
-        return $this->idIcone;
+    public function getIdicone(){
+        return $this->idicone;
     }
-    public function setIdIcone($idIcone){
-        $this->idIcone = $idIcone;
+    public function setIdicone($idicone){
+        $this->idicone = $idicone;
     }
     public function getDescricao(){
         return $this->descricao;

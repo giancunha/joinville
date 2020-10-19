@@ -9,7 +9,7 @@
     $resultado = Menu::listaMenuPaisPorPerfil( $idUsuario );
     foreach($resultado as $chave => $valor){
         ?>
-        <li class="nav-parent<?php if($valor->getIdMenu() == $menuPai->getIdMenu()){ echo ' nav-active active'; } ?>" title="<?php echo $valor->getDescricao(); ?>"><a href="<?php echo $valor->getSecao(); ?>"><i class="<?php echo $valor->getIdIcone(); ?>"></i> <span><?php echo corrigeCodificacao($valor->getNome()); ?></span></a>
+        <li class="nav-parent<?php if($valor->getIdMenu() == $menuPai->getIdMenu()){ echo ' nav-active active'; } ?>" title="<?php echo $valor->getDescricao(); ?>"><a href="<?php echo $valor->getSecao(); ?>"><i class="<?php echo $valor->getIdicone(); ?>"></i> <span><?php echo corrigeCodificacao($valor->getNome()); ?></span></a>
             <ul class="children"<?php if($valor->getIdMenu() == $menuPai->getIdMenu()){ echo ' style="display: block;"'; } ?>>
                 <?php
                 $resultado2 = Menu::listaMenuFilhosPorPerfil( $valor->getIdMenu(), $idUsuario );

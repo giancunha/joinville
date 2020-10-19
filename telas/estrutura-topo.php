@@ -4,7 +4,7 @@ if($menuPai->getIdMenu() > 0){
     $menuFilho->setSecao($gets[1]);
     $menuFilho->selecionaFilho();
     $icone = new MenuIcone();
-    $icone->setIdMenuIcone($menuPai->getIdIcone());
+    $icone->setIdMenuIcone($menuPai->getIdicone());
     $icone->seleciona();
     ?>
     <div class="pageheader">
