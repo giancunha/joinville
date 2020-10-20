@@ -27,18 +27,18 @@ if($_POST['vencimento'] == ''
 }
 $idServico = $_POST['idServico'];
 $idUsuario = $usuario->getIdUsuario();
-$idPrevisao = $_POST['idPrevisao'];
+$idProdutoTipo = $_POST['idProdutoTipo'];
 $tipo = $_POST['tipoPagamento'];
 $vencimento = $_POST['vencimento'];
 $valor = $_POST['valor'] > 0 ? baseToDecimal(decimalToBase($_POST['valor']) * -1) : $_POST['valor'];
 $descricao = $_POST['descricao'];
-$previsao = new Previsao;
-$previsao->setId( $idPrevisao );
-$previsao->setIdServico( $idServico );
-$previsao->setIdUsuario( $idUsuario );
-$previsao->setTipo( $tipo );
-$previsao->setVencimento( $vencimento );
-$previsao->setValor( $valor );
-$previsao->setDescricao( $descricao );
-$idPrevisao = $previsao->altera();
+$produtoTipo = new ProdutoTipo;
+$produtoTipo->setId( $idProdutoTipo );
+$produtoTipo->setIdServico( $idServico );
+$produtoTipo->setIdUsuario( $idUsuario );
+$produtoTipo->setTipo( $tipo );
+$produtoTipo->setVencimento( $vencimento );
+$produtoTipo->setImposto( $valor );
+$produtoTipo->setDescricao( $descricao );
+$idProdutoTipo = $produtoTipo->altera();
 echo 1;

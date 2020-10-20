@@ -4,6 +4,8 @@ ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
 if(is_file("../config/includes.php")){
     $caminho = "../";
+} else if(is_file("../../../config/includes.php")){
+    $caminho = "../../../";
 } else {
     $caminho = "";
 }
@@ -20,10 +22,8 @@ include_once($caminho . "class/PerfilMenu.php");
 include_once($caminho . "class/Usuario.php");
 include_once($caminho . "class/UsuarioPerfil.php");
 //CLASSES
+include_once($caminho . "class/ProdutoTipo.php");
 /*
-include_once($caminho . "class/Administradora.php");
-include_once($caminho . "class/BuscaViaCEP.php");
-include_once($caminho . "class/BuscaViaCEPJSON.php");
 include_once($caminho . "class/Cidade.php");
 include_once($caminho . "class/Cliente.php");
 include_once($caminho . "class/Estado.php");

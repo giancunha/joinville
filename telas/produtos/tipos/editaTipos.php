@@ -1,15 +1,15 @@
 <?php
 include_once("../../../config/includes.php");
-$idPrevisao = $_REQUEST['idPrevisao'];
-$resultado = new Previsao();
-$resultado->setId( $idPrevisao );
+$idProdutoTipo = $_REQUEST['idProdutoTipo'];
+$resultado = new ProdutoTipo();
+$resultado->setId( $idProdutoTipo );
 $resultado->seleciona();
-$previsao = [
+$produtoTipo = [
     'id'=> $resultado->getId(),
     'idServico' => $resultado->getIdServico(),
     'tipo' => $resultado->getTipo(),
     'vencimento' => $resultado->getVencimento(),
-    'valor' => $resultado->getValor(),
+    'valor' => $resultado->getImposto(),
     'descricao' => $resultado->getDescricao(),
 ];
-echo json_encode( $previsao );
+echo json_encode( $produtoTipo );

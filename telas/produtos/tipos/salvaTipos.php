@@ -45,19 +45,19 @@ $lancamentos = $_POST['lancamentos'];
 $periodicidade = $_POST['periodicidade'];
 $idControle = NULL;
 for ($i = $lancamentos; $i > 0; $i--) {
-    $previsao = new Previsao;
-    $previsao->setIdServico( $idServico );
-    $previsao->setIdControle( $idControle );
-    $previsao->setIdUsuario( $idUsuario );
-    $previsao->setTipo( $tipo );
-    $previsao->setVencimento( $vencimento );
-    $previsao->setValor( $valor );
-    $previsao->setDescricao( $descricao );
-    $idPrevisao = $previsao->insere();
+    $produtoTipo = new ProdutoTipo;
+    $produtoTipo->setIdServico( $idServico );
+    $produtoTipo->setIdControle( $idControle );
+    $produtoTipo->setIdUsuario( $idUsuario );
+    $produtoTipo->setTipo( $tipo );
+    $produtoTipo->setVencimento( $vencimento );
+    $produtoTipo->setImposto( $valor );
+    $produtoTipo->setDescricao( $descricao );
+    $idProdutoTipo = $produtoTipo->insere();
     if(empty($idControle)){
-        $idControle = $idPrevisao;
-        $previsao->setIdControle( $idControle );
-        $previsao->atualizaIdControle();
+        $idControle = $idProdutoTipo;
+        $produtoTipo->setIdControle( $idControle );
+        $produtoTipo->atualizaIdControle();
     }
     $vencimento = date('d/m/Y', strtotime(dataToBase($vencimento) . '+' . $periodicidade));
 }
