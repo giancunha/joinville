@@ -73,7 +73,7 @@ $(document).ready(function () {
                         "<tr valign='middle'>\n" +
                         '    <td>' + produtos[i].id + '</td>\n' +
                         '    <td>' + produtos[i].tipo + '</td>\n' +
-                        '    <td align="right">' + produtos[i].imposto + '</td>\n' +
+                        '    <td align="right">' + produtos[i].imposto + '%</td>\n' +
                         '    <td align="right">\n' +
                         '        <a class="btn btn-default editaProdutoTipo"\n' +
                         '           title="Editar"\n' +

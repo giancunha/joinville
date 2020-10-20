@@ -181,7 +181,7 @@ td .btn {
     vertical-align: middle;
 }
 
-.preco {
+.preco, .imposto {
     text-align: right;
 }
 

@@ -517,6 +517,7 @@ jQuery(function ($) {
     $(".cpf").mask("999.999.999-99");
     $(".data, .dataFundacao, .dataNascimento").mask("99/99/9999");
     $(".preco").mask("##.##0,00", {reverse: true});
+    $(".imposto").mask("##0,00", {reverse: true});
     var mask = function (val) {
         val = val.split(":");
         return (parseInt(val[0]) > 19)? "HZ:M0" : "H0:M0";

@@ -28,25 +28,18 @@ $indice .= '</ul>';
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-sm-9">
-                                <label class="control-label">Nome</label>
-                                <input type="text" name="descricao" class="form-control" maxlength="150" id="descricao" />
+                                <label class="control-label">Nome Tipo</label>
+                                <input type="text" name="tipo" class="form-control" maxlength="150" id="tipo" />
                             </div>
                             <div class="col-sm-3">
                                 <label class="control-label">Imposto</label>
-                                <input type="text" name="valor" class="form-control preco" maxlength="8" id="valor" />
+                                <input type="text" name="imposto" class="form-control imposto" maxlength="8" id="imposto" />
                             </div>
                         </div>
                     </div><!-- panel-body -->
                     <div class="panel-footer">
                         <button type="submit" class="btn btn-primary" id="btnIncluiDado" data-toggle="modal" data-secaoPai="<?php echo $gets[0]; ?>" data-secaoFilho="<?php echo $gets[1]; ?>">Cadastrar</button>
                         <button type="submit" class="btn btn-primary campoOculto" id="btnAlteraDado" data-toggle="modal" data-secaoPai="<?php echo $gets[0]; ?>" data-secaoFilho="<?php echo $gets[1]; ?>">Atualizar</button>
-                        <div class="alert alert-info">
-                            <span class="fa fa-info-circle"></span><br>
-                            - Serão listadas apenas categorias setadas como Ambas ou Despesas<br>
-                            - Como é uma saída, o sistema irá sempre registrar o valor como negativo.<br>
-                            - Em lançamentos deve ser informado quantas vezes se repetirá<br>
-                            - Em periodicidade deve ser informado de quanto em quanto tempo se repetirá o lançamento
-                        </div>
                     </div>
                 </div>
             </div>

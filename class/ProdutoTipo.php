@@ -47,14 +47,14 @@ class ProdutoTipo {
     }
 
     public function insere(){
-        $sql = "
-            INSERT INTO ProdutoTipo (
+        $sql = '
+            INSERT INTO "produtoTipo" (
                    tipo,
                    imposto
             ) VALUES (
                    ?,?
             )
-        ";
+        ';
         $bd = new BdSQL;
         $dados = array(
             array(
@@ -102,6 +102,26 @@ class ProdutoTipo {
               FROM ProdutoTipo
              WHERE id = '$this->id'
         ";
+        $resultado = $bd->consulta($sql);
+        if(count($resultado)==1){
+            foreach( $resultado[0] as $chave=>$valor ){
+                if(!is_int($chave)){
+                    $this->$chave = $valor;
+                }
+            }
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function selecionaTipo(){
+        $bd = new BdSQL;
+        $sql = '
+            SELECT id
+              FROM "produtoTipo"
+             WHERE tipo = \'' . $this->tipo . '\'
+        ';
         $resultado = $bd->consulta($sql);
         if(count($resultado)==1){
             foreach( $resultado[0] as $chave=>$valor ){
