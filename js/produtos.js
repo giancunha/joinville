@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var urlSecaoPai = $('#urlSecaoPai').val();
+    var urlSecaoFilho = $('#urlSecaoFilho').val();
     $("#formFiltro").submit(function ( e ) {
         e.preventDefault();
         listaPrincipal();
@@ -6,19 +8,15 @@ $(document).ready(function () {
     function editaProdutoTipo() {
         $(".editaProdutoTipo").click(function () {
             var idProdutoTipo = $(this).data('id');
-            $.getJSON('/telas/caixa/produtoTipo/editaProdutoTipo.php', {
+            $.getJSON('/telas/' + urlSecaoPai + '/' + urlSecaoFilho + '/editaTipos.php', {
                 idProdutoTipo: idProdutoTipo
             }, function (data) {
                 $('html, body').animate({scrollTop: 200}, {duration: 3000});
                 $('.telacadastro').show();
-                $("#tituloCadastro").html('Edita Previsão - ' + data.descricao);
+                $("#tituloCadastro").html('Edita Tipo - ' + data.tipo);
                 $('#idProdutoTipo').val(data.id);
-                $('#tipoPagamento').val(data.tipo).trigger('change');
-                $('#vencimento').val(data.vencimento);
-                $('#idServico').val(data.idServico).trigger('change');
-                $('#valor').val(data.valor);
-                $('#descricao').val(data.descricao);
-                $("#lancamentos").prop("disabled", true);
+                $('#imposto').val(data.imposto);
+                $('#tipo').val(data.tipo);
                 $('#btnIncluiDado').hide();
                 $('#btnAlteraDado').show();
             });
@@ -58,8 +56,6 @@ $(document).ready(function () {
         });
     }
     window.listaPrincipal = function listaPrincipal() {
-        var urlSecaoPai = $('#urlSecaoPai').val();
-        var urlSecaoFilho = $('#urlSecaoFilho').val();
         if(urlSecaoFilho == 'tipos') {
             $('#dadosProdutoTipo').html("<td colspan='6' class='text-center'><i class='fa fa-spinner fa-spin'></i>Carregando previsões. Aguarde...</td>");
             $('#dadosProdutoTipoFoot').html("<i class='fa fa-spinner fa-spin'></i>");
@@ -96,6 +92,7 @@ $(document).ready(function () {
                 $('#dadosProdutoTipo').html(tipos);
                 $('#dadosProdutoTipoFoot').html(data.tFoot);
                 mensagemajax("Tipos carregados", 'growl-primary', 5000);
+                $("#tituloCadastro").html('Inserir tipo');
                 resetaFormulario();
                 editaProdutoTipo();
                 excluiProdutoTipo();

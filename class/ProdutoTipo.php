@@ -7,12 +7,12 @@ class ProdutoTipo {
     public function __construct(){}
 //MÉTODOS
     public function altera(){
-        $sql = "
-			UPDATE ProdutoTipo
+        $sql = '
+			UPDATE "produtoTipo"
 			   SET tipo = ?,
 			       imposto = ?
 			 WHERE id = ?
-		";
+		';
         $bd = new BdSQL;
         $dados = array(
             array(
@@ -97,11 +97,11 @@ class ProdutoTipo {
 
     public function seleciona(){
         $bd = new BdSQL;
-        $sql = "
+        $sql = '
             SELECT *
-              FROM ProdutoTipo
-             WHERE id = '$this->id'
-        ";
+              FROM "produtoTipo"
+             WHERE id = ' . $this->id . '
+        ';
         $resultado = $bd->consulta($sql);
         if(count($resultado)==1){
             foreach( $resultado[0] as $chave=>$valor ){
@@ -121,6 +121,7 @@ class ProdutoTipo {
             SELECT id
               FROM "produtoTipo"
              WHERE tipo = \'' . $this->tipo . '\'
+               AND id != ' . $this->id . '
         ';
         $resultado = $bd->consulta($sql);
         if(count($resultado)==1){
@@ -152,7 +153,7 @@ class ProdutoTipo {
     }
     public function getImposto()
     {
-        return baseToDecimal($this->imposto);
+        return preco($this->imposto);
     }
     public function setImposto($imposto)
     {

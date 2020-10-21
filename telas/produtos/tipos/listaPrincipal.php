@@ -7,7 +7,7 @@ $produtos = $produtosFixas = array();
 foreach($resultado as $chave => $valor){
     $listados++;
     $produtos[] = array(
-        'id' => $valor->getId(),
+        'id' => exibeId($valor->getId()),
         'tipo' => $valor->getTipo(),
         'imposto' => $valor->getImposto(),
     );

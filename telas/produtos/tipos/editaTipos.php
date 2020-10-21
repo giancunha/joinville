@@ -6,10 +6,7 @@ $resultado->setId( $idProdutoTipo );
 $resultado->seleciona();
 $produtoTipo = [
     'id'=> $resultado->getId(),
-    'idServico' => $resultado->getIdServico(),
     'tipo' => $resultado->getTipo(),
-    'vencimento' => $resultado->getVencimento(),
-    'valor' => $resultado->getImposto(),
-    'descricao' => $resultado->getDescricao(),
+    'imposto' => $resultado->getImposto(),
 ];
 echo json_encode( $produtoTipo );

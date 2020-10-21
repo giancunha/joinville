@@ -1,44 +1,29 @@
 <?php
 include('../../../config/includes.php');
-$usuario = unserialize($_SESSION['usuario-adm-'.SESSAOADM]);
-if($_POST['vencimento'] == ''
-    or $_POST['tipoPagamento'] == ''
-    or $_POST['idServico'] == ''
-    or $_POST['descricao'] == ''
-    or $_POST['valor'] == ''
+if(
+    $_POST['tipo'] == ''
+    or $_POST['imposto'] == ''
 ){
     echo "Campo(s) obrigatório(s):";
-    if ($_POST['vencimento'] == ''){
-        echo "<br> - Data vencimento";
+    if ($_POST['tipo'] == ''){
+        echo "<br> - Nome Tipo";
     }
-    if ($_POST['tipoPagamento'] == ''){
-        echo "<br> - Tipo de Pagamento";
-    }
-    if ($_POST['idServico'] == ''){
-        echo "<br> - Serviço";
-    }
-    if ($_POST['descricao'] == ''){
-        echo "<br> - Descrição";
-    }
-    if ($_POST['valor'] == ''){
-        echo "<br> - Valor";
+    if ($_POST['imposto'] == ''){
+        echo "<br> - Imposto";
     }
     exit();
 }
-$idServico = $_POST['idServico'];
-$idUsuario = $usuario->getIdUsuario();
+
 $idProdutoTipo = $_POST['idProdutoTipo'];
-$tipo = $_POST['tipoPagamento'];
-$vencimento = $_POST['vencimento'];
-$valor = $_POST['valor'] > 0 ? baseToDecimal(decimalToBase($_POST['valor']) * -1) : $_POST['valor'];
-$descricao = $_POST['descricao'];
+$tipo = $_POST['tipo'];
+$imposto = $_POST['imposto'];
 $produtoTipo = new ProdutoTipo;
 $produtoTipo->setId( $idProdutoTipo );
-$produtoTipo->setIdServico( $idServico );
-$produtoTipo->setIdUsuario( $idUsuario );
 $produtoTipo->setTipo( $tipo );
-$produtoTipo->setVencimento( $vencimento );
-$produtoTipo->setImposto( $valor );
-$produtoTipo->setDescricao( $descricao );
-$idProdutoTipo = $produtoTipo->altera();
+$produtoTipo->setImposto( $imposto );
+if($produtoTipo->selecionaTipo()){
+    echo "Tipo $tipo já cadastrado!";
+    exit;
+}
+$produtoTipo->altera();
 echo 1;
