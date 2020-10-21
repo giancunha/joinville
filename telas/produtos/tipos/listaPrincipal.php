@@ -2,8 +2,8 @@
 include_once("../../../config/includes.php");
 $resultado = new ProdutoTipo();
 $resultado = $resultado->listaPrincipal();
-$listados = $totalFaturas = 0;
-$produtos = $produtosFixas = array();
+$listados = 0;
+$produtos = array();
 foreach($resultado as $chave => $valor){
     $listados++;
     $produtos[] = array(

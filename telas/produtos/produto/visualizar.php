@@ -33,7 +33,15 @@ $indice .= '</ul>';
                             </div>
                             <div class="col-sm-3">
                                 <label class="control-label">Tipo</label>
-                                <input type="text" name="idTipo" class="form-control" maxlength="150" id="idTipo" />
+                                <select name="idTipo" class="select2" id="idTipo">
+                                    <option value="">Selecione</option>
+                                    <?php
+                                    $resultado = ProdutoTipo::listaPrincipal();
+                                    foreach($resultado as $chave => $valor){
+                                        ?>
+                                        <option value="<?php echo $valor->getId(); ?>"><?php echo $valor->getTipo(); ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                             <div class="col-sm-3">
                                 <label class="control-label">Valor</label>

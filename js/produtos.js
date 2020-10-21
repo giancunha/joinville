@@ -101,35 +101,46 @@ $(document).ready(function () {
                 $('.btncadastro').hide();
                 $('.telacadastro').show();
             });
-        } else if(urlSecaoFilho == 'caixaFluxo') {
-            var dataInicial = $('#dataInicial').val();
-            var dataFinal = $('#dataFinal').val();
-            $('.saldoAnterior, .saldoPeriodo, .saldoTotal').html("<i class='fa fa-spinner fa-spin'></i>");
-            $('#dadosCaixa').html("<td colspan='6' class='text-center'><i class='fa fa-spinner fa-spin'></i>Carregando lançamentos. Aguarde...</td>");
-            $('#dadosCaixaFoot').html("<i class='fa fa-spinner fa-spin'></i>");
-            $.getJSON('/telas/caixa/' + urlSecaoFilho + '/listaPrincipal.php', {
-                dataInicial: dataInicial,
-                dataFinal: dataFinal
+        } else if(urlSecaoFilho == 'produto') {
+            $('#dadosProduto').html("<td colspan='6' class='text-center'><i class='fa fa-spinner fa-spin'></i>Carregando lançamentos. Aguarde...</td>");
+            $('#dadosProdutoFoot').html("<i class='fa fa-spinner fa-spin'></i>");
+            $.getJSON('/telas/' + urlSecaoPai + '/' + urlSecaoFilho + '/listaPrincipal.php', {
             }, function (data) {
-                var lancamentos = data.listaLancamentos;
-                var lancamento = '';
-                for (var i = 0; i < lancamentos.length; i++) {
-                    lancamento += "" +
+                var produtos = data.produtos;
+                var lista = '';
+                for (var i = 0; i < produtos.length; i++) {
+                    lista += "" +
                         "<tr valign='middle'>\n" +
-                        '    <td>' + lancamentos[i].dia + '</td>\n' +
-                        '    <td>' + lancamentos[i].categoria + '</td>\n' +
-                        '    <td>' + lancamentos[i].forma + '</td>\n' +
-                        '    <td>' + lancamentos[i].descricao + '</td>\n' +
-                        '    <td align="right">R$ ' + lancamentos[i].valor + '</td>\n' +
-                        '    <td align="right">R$ ' + lancamentos[i].saldo + '</td>\n' +
+                        '    <td>' + produtos[i].id + '</td>\n' +
+                        '    <td>' + produtos[i].tipo + '</td>\n' +
+                        '    <td>' + produtos[i].nome + '</td>\n' +
+                        '    <td align="right">R$ ' + produtos[i].valor + '</td>\n' +
+                        '    <td align="right">\n' +
+                        '        <a class="btn btn-default editaProdutoTipo"\n' +
+                        '           title="Editar"\n' +
+                        '           data-id="' + produtos[i].id + '"\n' +
+                        '        >\n' +
+                        '            <i class="fa fa-edit"></i>\n' +
+                        '        </a>\n' +
+                        '        <a href="#"\n' +
+                        '           class="btn btn-default excluiProdutoTipo"\n' +
+                        '           data-secaoPai="' + urlSecaoPai + '"\n' +
+                        '           data-secaoFilho="' + urlSecaoFilho + '"\n' +
+                        '           data-id="' + produtos[i].id + '"\n' +
+                        '           title="Excluir"\n' +
+                        '        >\n' +
+                        '            <i class="fa fa-trash-o"></i>\n' +
+                        '        </a>\n' +
+                        '    </td>\n' +
                         '</tr>'
                 }
-                $('.saldoAnterior').html(data.saldoAnterior);
-                $('.saldoPeriodo').html(data.saldoPeriodo);
-                $('.saldoTotal').html(data.saldoTotal);
-                $('#dadosCaixa').html(lancamento);
-                $('#dadosCaixaFoot').html(data.tFootLancamentos);
-                mensagemajax("Lançamentos carregados", 'growl-primary', 5000);
+                $('#dadosProduto').html(lista);
+                $('#dadosProdutoFoot').html(data.tFoot);
+                mensagemajax("Produtos carregados", 'growl-primary', 5000);
+                $("#tituloCadastro").html('Inserir produto');
+                resetaFormulario();
+                editaProduto();
+                excluiProduto();
             });
         }
     }

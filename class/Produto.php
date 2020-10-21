@@ -51,7 +51,7 @@ class Produto {
             INSERT INTO "produto" (
                    nome,
                    valor,
-                   idTipo
+                   "idTipo"
             ) VALUES (
                    ?,?,?
             )
@@ -75,9 +75,12 @@ class Produto {
     public static function listaPrincipal( ){
         $bd = new BdSQL;
         $sql = '
-            SELECT *
+            SELECT produto.*
               FROM "produto"
-          ORDER BY nome
+              JOIN "produtoTipo"
+                ON "produto"."idTipo" = "produtoTipo".id
+          ORDER BY tipo,
+                   nome
         ';
         $resultSet = $bd->consulta( $sql );
         $resultado = array();
