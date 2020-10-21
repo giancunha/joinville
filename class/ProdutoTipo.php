@@ -112,6 +112,27 @@ class ProdutoTipo {
         }
     }
 
+    public function selecionaProduto(){
+        $bd = new BdSQL;
+        $sql = '
+            SELECT 1
+              FROM produto
+             WHERE "idTipo" = ' . $this->id . '
+             LIMIT 1
+        ';
+        $resultado = $bd->consulta($sql);
+        if(count($resultado)==1){
+            foreach( $resultado[0] as $chave=>$valor ){
+                if(!is_int($chave)){
+                    $this->$chave = $valor;
+                }
+            }
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function selecionaTipo(){
         $bd = new BdSQL;
         $sql = '
