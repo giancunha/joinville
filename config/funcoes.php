@@ -569,9 +569,9 @@ function positivoNegativo( $valor ){
     echo $valor > 0 ? NULL : ' style="color: red;"';
 }
 
-function preco($valor) {
+function preco($valor, $decimais = 2) {
     $valor = decimalToBase($valor);
-    $valor = number_format( (float) $valor, 2, ',','.' );
+    $valor = number_format( (float) $valor, $decimais, ',','.' );
     return $valor;
 }
 

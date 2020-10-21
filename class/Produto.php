@@ -12,7 +12,7 @@ class Produto {
 			UPDATE "produto"
 			   SET nome = ?,
 			       valor = ?,
-			       idTipo = ?
+			       "idTipo" = ?
 			 WHERE id = ?
 		';
         $bd = new BdSQL;

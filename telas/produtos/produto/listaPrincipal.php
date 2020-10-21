@@ -15,7 +15,7 @@ foreach($resultado as $chave => $valor){
         'tipo' => $produtoTipo->getTipo(),
         'nome' => $valor->getNome(),
         'valor' => $valor->getValor(),
-        'imposto' => preco($imposto),
+        'imposto' => preco($imposto, 3),
     );
 }
 $dados["produtos"] = $produtos;

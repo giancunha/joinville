@@ -5,6 +5,24 @@ $(document).ready(function () {
         e.preventDefault();
         listaPrincipal();
     });
+    function editaProduto() {
+        $(".editaProduto").click(function () {
+            var idProduto = $(this).data('id');
+            $.getJSON('/telas/' + urlSecaoPai + '/' + urlSecaoFilho + '/editaProduto.php', {
+                idProduto: idProduto
+            }, function (data) {
+                $('html, body').animate({scrollTop: 200}, {duration: 3000});
+                $('.telacadastro').show();
+                $("#tituloCadastro").html('Edita Produto - ' + data.nome);
+                $('#idProduto').val(data.id);
+                $('#nome').val(data.nome);
+                $('#valor').val(data.valor);
+                $('#idTipo').val(data.idTipo).trigger('change');
+                $('#btnIncluiDado').hide();
+                $('#btnAlteraDado').show();
+            });
+        });
+    }
     function editaProdutoTipo() {
         $(".editaProdutoTipo").click(function () {
             var idProdutoTipo = $(this).data('id');
@@ -117,7 +135,7 @@ $(document).ready(function () {
                         '    <td align="right">R$ ' + produtos[i].valor + '</td>\n' +
                         '    <td align="right">R$ ' + produtos[i].imposto + '</td>\n' +
                         '    <td align="right">\n' +
-                        '        <a class="btn btn-default editaProdutoTipo"\n' +
+                        '        <a class="btn btn-default editaProduto"\n' +
                         '           title="Editar"\n' +
                         '           data-id="' + produtos[i].id + '"\n' +
                         '        >\n' +

@@ -45,7 +45,7 @@ $indice .= '</ul>';
                             </div>
                             <div class="col-sm-3">
                                 <label class="control-label">Valor</label>
-                                <input type="text" name="valor" class="form-control valor" maxlength="8" id="valor" />
+                                <input type="text" name="valor" class="form-control preco" maxlength="8" id="valor" />
                             </div>
                         </div>
                     </div><!-- panel-body -->
