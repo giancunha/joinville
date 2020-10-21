@@ -22,11 +22,9 @@ include_once($caminho . "class/PerfilMenu.php");
 include_once($caminho . "class/Usuario.php");
 include_once($caminho . "class/UsuarioPerfil.php");
 //CLASSES
+include_once($caminho . "class/Produto.php");
 include_once($caminho . "class/ProdutoTipo.php");
 /*
-include_once($caminho . "class/Cidade.php");
-include_once($caminho . "class/Cliente.php");
-include_once($caminho . "class/Estado.php");
 include_once($caminho . "class/Fatura.php");
 include_once($caminho . "class/FaturaItem.php");
 include_once($caminho . "class/Pais.php");

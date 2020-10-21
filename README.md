@@ -1,9 +1,7 @@
 # joinville
 
-##[Produtos] Tipo
-id, nome, imposto
 ##[Produtos] 
-id, nome, valor  
+id, tipo, nome, valor
 ##[Produtos] Tela vendas
 produtos, valor unitário, quantidades, valor total por item, total imposto por item
 ##[Produtos] Totais compra
