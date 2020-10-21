@@ -1,6 +1,6 @@
 <?php
 class ProdutoTipo {
-    public $id;
+    public $id = 0;
     private $tipo;
     private $imposto;
 // contrutor vazio
@@ -30,10 +30,7 @@ class ProdutoTipo {
     }
 
     public function exclui(){
-        if($this->id == $this->idControle){
-            $this->anulaVinculo();
-        }
-        $sql = "DELETE FROM ProdutoTipo WHERE id = ?";
+        $sql = 'DELETE FROM "produtoTipo" WHERE id = ?';
         $bd = new BdSQL;
         $dados = array(
             array('1'=>$this->id)
