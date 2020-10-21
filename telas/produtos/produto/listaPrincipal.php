@@ -9,11 +9,13 @@ foreach($resultado as $chave => $valor){
     $listados++;
     $produtoTipo->setId($valor->getIdTipo());
     $produtoTipo->seleciona();
+    $imposto = decimalToBase($valor->getValor())*(decimalToBase($produtoTipo->getImposto())/100);
     $produtos[] = array(
         'id' => exibeId($valor->getId()),
         'tipo' => $produtoTipo->getTipo(),
         'nome' => $valor->getNome(),
         'valor' => $valor->getValor(),
+        'imposto' => preco($imposto),
     );
 }
 $dados["produtos"] = $produtos;

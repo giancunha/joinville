@@ -115,6 +115,7 @@ $(document).ready(function () {
                         '    <td>' + produtos[i].tipo + '</td>\n' +
                         '    <td>' + produtos[i].nome + '</td>\n' +
                         '    <td align="right">R$ ' + produtos[i].valor + '</td>\n' +
+                        '    <td align="right">R$ ' + produtos[i].imposto + '</td>\n' +
                         '    <td align="right">\n' +
                         '        <a class="btn btn-default editaProdutoTipo"\n' +
                         '           title="Editar"\n' +

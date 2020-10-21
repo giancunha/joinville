@@ -78,6 +78,7 @@ $indice .= '</ul>';
                             <th>Tipo</th>
                             <th>Nome</th>
                             <th>Valor</th>
+                            <th>Imposto</th>
                             <th>&nbsp;</th>
                         </tr>
                         </thead>
