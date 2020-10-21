@@ -40,13 +40,42 @@ $(document).ready(function () {
             });
         });
     }
+    function excluiProduto() {
+        $(".excluiProduto").click(function (e) {
+            e.preventDefault();
+            mensagemajax("<i class='fa fa-spinner fa-spin'></i> Excluindo dado. Aguarde...", 'growl-warning');
+            caminho = urlSecaoPai + "/" + urlSecaoFilho + "/exclui" + ucFirst(urlSecaoFilho);
+            id = $(this).attr("data-id");
+            resposta = confirm("Realmente deseja excluir esse dado?");
+            if (resposta) {
+                $.ajax({
+                    type: "POST",
+                    data: {
+                        id: id
+                    },
+                    url: '/telas/' + caminho + '.php',
+                    success: function (data) {
+                        if (data == 1) {
+                            mensagemajax('Removido com sucesso!', 'growl-success');
+                            listaPrincipal();
+                        } else {
+                            mensagemajax('Erro ao remover!<br />Motivo:<br />' + data, 'growl-danger');
+                        }
+                    },
+                    error: function () {
+                        mensagemajax('Erro ao excluir!', 'growl-danger');
+                    }
+                });
+            } else {
+                mensagemajax("<i class='fa fa-info'></i> Exclusão cancelada", 'growl-info');
+            }
+        });
+    }
     function excluiProdutoTipo() {
         $(".excluiProdutoTipo").click(function (e) {
             e.preventDefault();
             mensagemajax("<i class='fa fa-spinner fa-spin'></i> Excluindo dado. Aguarde...", 'growl-warning');
-            var secaoPai = $(this).attr("data-secaoPai");
-            var secaoFilho = $(this).attr("data-secaoFilho");
-            caminho = secaoPai + "/" + secaoFilho + "/exclui" + ucFirst(secaoFilho);
+            caminho = urlSecaoPai + "/" + urlSecaoFilho + "/exclui" + ucFirst(urlSecaoFilho);
             id = $(this).attr("data-id");
             resposta = confirm("Realmente deseja excluir esse dado?");
             if (resposta) {
@@ -97,8 +126,6 @@ $(document).ready(function () {
                         '        </a>\n' +
                         '        <a href="#"\n' +
                         '           class="btn btn-default excluiProdutoTipo"\n' +
-                        '           data-secaoPai="' + data.secaoPai + '"\n' +
-                        '           data-secaoFilho="' + data.secaoFilho + '"\n' +
                         '           data-id="' + produtos[i].id + '"\n' +
                         '           title="Excluir"\n' +
                         '        >\n' +
@@ -142,9 +169,7 @@ $(document).ready(function () {
                         '            <i class="fa fa-edit"></i>\n' +
                         '        </a>\n' +
                         '        <a href="#"\n' +
-                        '           class="btn btn-default excluiProdutoTipo"\n' +
-                        '           data-secaoPai="' + urlSecaoPai + '"\n' +
-                        '           data-secaoFilho="' + urlSecaoFilho + '"\n' +
+                        '           class="btn btn-default excluiProduto"\n' +
                         '           data-id="' + produtos[i].id + '"\n' +
                         '           title="Excluir"\n' +
                         '        >\n' +
