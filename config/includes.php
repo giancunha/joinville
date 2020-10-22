@@ -24,12 +24,5 @@ include_once($caminho . "class/UsuarioPerfil.php");
 //CLASSES
 include_once($caminho . "class/Produto.php");
 include_once($caminho . "class/ProdutoTipo.php");
-/*
-include_once($caminho . "class/Fatura.php");
-include_once($caminho . "class/FaturaItem.php");
-include_once($caminho . "class/Pais.php");
-include_once($caminho . "class/Pessoa.php");
-include_once($caminho . "class/PessoaFuncao.php");
-include_once($caminho . "class/Previsao.php");
-include_once($caminho . "class/Servico.php");
-*/
+include_once($caminho . "class/Venda.php");
+include_once($caminho . "class/VendaItem.php");
