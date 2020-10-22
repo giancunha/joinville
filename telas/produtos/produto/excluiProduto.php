@@ -4,7 +4,10 @@ $idProduto = $_POST['id'];
 $produto = new Produto();
 $produto->setId( $idProduto );
 $produto->seleciona();
-//todo Validar se nome não está relacionado com vendas
+if($produto->selecionaVenda()){
+    echo "Impossível excluir produto com venda efetuada";
+    exit;
+}
 if($produto->exclui()){
     echo '1';
 }
