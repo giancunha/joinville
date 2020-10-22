@@ -1,11 +1,8 @@
 # joinville
 
-##[Produtos] Totais compra
-total compras, total impostos
-
 ### Entrega
 Deverão ser enviados para análise:  
-·         O sistema no formato ZIP para realizar o deploy no servidor de aplicação.  
+·         O sistema no formato ZIP para realizar o deploy no servidor de aplicação.
 ·         O banco de dados utilizado.  
 ·         Os detalhes de configuração do banco de dados, como o nome de usuário e senha, o nome do alias do banco de dados e informações adicionais para validarmos o aplicativo.
 
